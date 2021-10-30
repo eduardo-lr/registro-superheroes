@@ -2,21 +2,31 @@ package com.udemy.eduardo.registrodesuperheroes
 
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.FileProvider
 import androidx.core.graphics.drawable.toBitmap
 import com.udemy.eduardo.registrodesuperheroes.databinding.ActivityMainBinding
+import java.io.File
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var heroeImage : ImageView
     private var heroeBitmap : Bitmap? = null
-    private val getContent = registerForActivityResult(ActivityResultContracts.TakePicturePreview()) {
-        bitmap ->
-        heroeBitmap = bitmap
-        heroeImage.setImageBitmap(heroeBitmap!!)
+    private var picturePath = ""
+
+    private val getContent = registerForActivityResult(ActivityResultContracts.TakePicture()) {
+        succes ->
+            if (succes && picturePath.isNotEmpty()) {
+                heroeBitmap = BitmapFactory.decodeFile(picturePath)
+                heroeImage.setImageBitmap(heroeBitmap!!)
+            }
     }
 
     companion object {
@@ -46,13 +56,27 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openCamera() {
-        getContent.launch(null)
+        val file = createImageFile()
+        var uri = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            FileProvider.getUriForFile(this, "$packageName.provider", file)
+        } else {
+            Uri.fromFile(file)
+        }
+        getContent.launch(uri)
+    }
+
+    private fun createImageFile(): File {
+        val file_name = "superheroe_image"
+        val fileDirectory = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        val file = File.createTempFile(file_name, ".jpg", fileDirectory)
+        picturePath = file.absolutePath
+        return file
     }
 
     private fun openDetailActivity(heroe: Superheroe) {
         val intent = Intent(this, DetailActivity::class.java)
         intent.putExtra(SUPERHEROE_KEY, heroe)
-        intent.putExtra(BITMAP_KEY, heroeImage.drawable.toBitmap())
+        intent.putExtra(BITMAP_KEY, picturePath)
         startActivity(intent)
     }
 }

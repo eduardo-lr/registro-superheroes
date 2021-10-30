@@ -11,14 +11,11 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val bundle = intent.extras!!
-        val superHeroeName = bundle.getString(MainActivity.SUPERHEROE_NAME_KEY) ?: ""
-        val alterEgo = bundle.getString(MainActivity.ALTER_EGO_KEY) ?: ""
-        val bio = bundle.getString(MainActivity.BIO_KEY) ?: ""
-        val power = bundle.getFloat(MainActivity.POWER_KEY)
+        val superheroe = bundle.getParcelable<Superheroe>(MainActivity.SUPERHEROE_KEY)!!
 
-        binding.heroName.text = superHeroeName
-        binding.alterEgo.text = alterEgo
-        binding.bio.text = bio
-        binding.ratingBar.rating = power
+        binding.heroName.text = superheroe.name
+        binding.alterEgo.text = superheroe.alter_ego
+        binding.bio.text = superheroe.bio
+        binding.ratingBar.rating = superheroe.power
     }
 }

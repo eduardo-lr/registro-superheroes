@@ -7,10 +7,7 @@ import com.udemy.eduardo.registrodesuperheroes.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     companion object {
-        const val SUPERHEROE_NAME_KEY = "superheroe_name"
-        const val ALTER_EGO_KEY = "alter_ego"
-        const val BIO_KEY = "bio"
-        const val POWER_KEY = "power"
+        const val SUPERHEROE_KEY = "superheroe"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,17 +20,14 @@ class MainActivity : AppCompatActivity() {
             val alterEgo = binding.alterEgoEdit.text.toString()
             val bio = binding.bioEdit.text.toString()
             val power = binding.rattingBar.rating
-            openDetailActivity(superHeroeName, alterEgo, bio, power)
+            val heroe = Superheroe(superHeroeName, alterEgo, bio, power)
+            openDetailActivity(heroe)
         }
     }
 
-    private fun openDetailActivity(superHeroeName: String, alterEgo: String,
-                                    bio: String, power: Float) {
+    private fun openDetailActivity(heroe: Superheroe) {
         val intent = Intent(this, DetailActivity::class.java)
-        intent.putExtra(SUPERHEROE_NAME_KEY, superHeroeName)
-        intent.putExtra(ALTER_EGO_KEY, alterEgo)
-        intent.putExtra(BIO_KEY, bio)
-        intent.putExtra(POWER_KEY, power)
+        intent.putExtra(SUPERHEROE_KEY, heroe)
         startActivity(intent)
     }
 }

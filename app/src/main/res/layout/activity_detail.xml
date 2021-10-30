@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="superheroe"
+            type="com.udemy.eduardo.registrodesuperheroes.Superheroe" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,7 +21,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
-            tools:text="short bio"
+            android:text="@{superheroe.bio}"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -56,7 +58,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            tools:text="Iron man"
+            android:text="@{superheroe.name}"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -83,7 +85,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            tools:text="Tony Stark"
+            android:text="@{superheroe.alter_ego}"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -110,6 +112,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:progressTint="@color/yellow"
             android:isIndicator="true"
+            android:rating="@{superheroe.power}"
             app:layout_constraintTop_toBottomOf="@+id/Power" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

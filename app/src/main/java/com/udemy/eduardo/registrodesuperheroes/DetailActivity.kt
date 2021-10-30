@@ -13,9 +13,6 @@ class DetailActivity : AppCompatActivity() {
         val bundle = intent.extras!!
         val superheroe = bundle.getParcelable<Superheroe>(MainActivity.SUPERHEROE_KEY)!!
 
-        binding.heroName.text = superheroe.name
-        binding.alterEgo.text = superheroe.alter_ego
-        binding.bio.text = superheroe.bio
-        binding.ratingBar.rating = superheroe.power
+        binding.superheroe = superheroe
     }
 }

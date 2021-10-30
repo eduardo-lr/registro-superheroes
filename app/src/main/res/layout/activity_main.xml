@@ -9,79 +9,91 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:padding="16dp"
         tools:context=".MainActivity">
 
-        <ImageView
-            android:id="@+id/hero_img"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@android:drawable/ic_menu_camera"/>
-
-        <EditText
-            android:id="@+id/hero_name_edit"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/hero_img"
-            android:layout_alignTop="@id/hero_img"
-            android:layout_marginStart="16dp"
-            android:hint="Superheroe name"/>
+            android:layout_above="@id/save_button"
+            android:layout_alignParentTop="true">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".MainActivity">
 
-        <EditText
-            android:id="@+id/alter_ego_edit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/hero_img"
-            android:layout_alignBottom="@id/hero_img"
-            android:layout_marginStart="16dp"
-            android:hint="Alter ego"/>
+                <ImageView
+                    android:id="@+id/hero_img"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:src="@android:drawable/ic_menu_camera"/>
 
-        <View
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@id/hero_img"
-            android:layout_marginTop="16dp"
-            android:background="@color/black"/>
+                <EditText
+                    android:id="@+id/hero_name_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/hero_img"
+                    android:layout_alignTop="@id/hero_img"
+                    android:layout_marginStart="16dp"
+                    android:hint="Superheroe name"/>
 
-        <TextView
-            android:id="@+id/bio_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Bio"
-            android:textColor="@color/black"
-            android:layout_below="@id/divider"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            android:textSize="20sp"/>
+                <EditText
+                    android:id="@+id/alter_ego_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/hero_img"
+                    android:layout_alignBottom="@id/hero_img"
+                    android:layout_marginStart="16dp"
+                    android:hint="Alter ego"/>
 
-        <EditText
-            android:id="@+id/bio_edit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/bio_text"
-            android:layout_marginTop="16dp"
-            android:hint="Short bio"/>
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/hero_img"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/black"/>
 
-        <TextView
-            android:id="@+id/power_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Poder"
-            android:textColor="@color/black"
-            android:layout_below="@id/bio_edit"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            android:textSize="20sp"/>
+                <TextView
+                    android:id="@+id/bio_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Bio"
+                    android:textColor="@color/black"
+                    android:layout_below="@id/divider"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:textSize="20sp"/>
 
-        <RatingBar
-            android:id="@+id/ratting_bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/power_text"
-            android:progressTint="@color/yellow"
-            android:layout_centerHorizontal="true"/>
+                <EditText
+                    android:id="@+id/bio_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/bio_text"
+                    android:layout_marginTop="16dp"
+                    android:hint="Short bio"/>
+
+                <TextView
+                    android:id="@+id/power_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Poder"
+                    android:textColor="@color/black"
+                    android:layout_below="@id/bio_edit"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:textSize="20sp"/>
+
+                <RatingBar
+                    android:id="@+id/ratting_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/power_text"
+                    android:progressTint="@color/yellow"
+                    android:layout_centerHorizontal="true"/>
+            </RelativeLayout>
+        </ScrollView>
 
         <Button
             android:id="@+id/save_button"
@@ -89,6 +101,5 @@
             android:layout_height="wrap_content"
             android:text="Guardar"
             android:layout_alignParentBottom="true"/>
-
     </RelativeLayout>
 </layout>

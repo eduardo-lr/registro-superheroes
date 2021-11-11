@@ -1,6 +1,6 @@
 # Aplicación Registro de superheroés
 
-Esta aplicación hace un registro (no persistente) de un superheróe, permite usar la cámara y mandar la imagén, junto con la demás información entre actividades. La aplicación usa el lenguaje <a href="https://kotlinlang.org/">Kotlin</a> y fue realizada en la IDE <a href="https://developer.android.com/studio">Android Studio</a>. A continuación se muestran las dos actividades que componen la aplicación:
+Esta aplicación hace un registro (no persistente) de un superheróe, permite usar la cámara y mandar la imagen, junto con la demás información entre actividades. La aplicación usa el lenguaje <a href="https://kotlinlang.org/">Kotlin</a> y fue realizada en la IDE <a href="https://developer.android.com/studio">Android Studio</a>. A continuación se muestran las dos actividades que componen la aplicación:
 
 <img src="heroes.png" alt="Aplicacion">
 
